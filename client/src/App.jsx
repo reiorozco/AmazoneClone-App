@@ -1,7 +1,11 @@
-import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
 import Header from "./components/header/header";
 import Home from "./components/home/home";
-import { Routes, Route } from "react-router-dom";
+import Checkout from "./components/checkout/checkout";
+
+import "./App.css";
 
 function App() {
   return (
@@ -9,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
-          {/*<Route path="checkout" element={<Home />} />*/}
+          <Route path="checkout" element={<Checkout />} />
         </Route>
       </Routes>
     </div>

@@ -1,7 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
+import { productAdded } from "../../store/basketSlice";
+
 import "./product.css";
 
 function Product({ id, title, image, price, rating }) {
+  const dispatch = useDispatch();
+
+  const addToBasket = () => {
+    dispatch(
+      productAdded({
+        id,
+        title,
+        image,
+        price,
+        rating,
+      })
+    );
+  };
+
   return (
     <div className="product">
       <div className="product__info">
@@ -16,14 +34,14 @@ function Product({ id, title, image, price, rating }) {
           {Array(rating)
             .fill(undefined, undefined, undefined)
             .map((_, i) => (
-              <p key={i}>🌟</p>
+              <p key={i}>⭐</p> // Star emoji ⭐
             ))}
         </div>
       </div>
 
       <img src={image} alt="product" />
 
-      <button>Add to Basket</button>
+      <button onClick={addToBasket}>Add to Basket</button>
     </div>
   );
 }

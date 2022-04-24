@@ -1,6 +1,6 @@
 import React from "react";
 import Product from "../product/product";
-import { row1, row2, row3 } from "../../source/productsData";
+import { row1, row2, row3 } from "../../utils/productsData";
 import "./home.css";
 
 function Home(props) {
@@ -17,6 +17,7 @@ function Home(props) {
           {row1.map((product) => (
             <Product
               key={product.id}
+              id={product.id}
               title={product.title}
               price={product.price}
               rating={product.rating}
@@ -29,6 +30,7 @@ function Home(props) {
           {row2.map((product) => (
             <Product
               key={product.id}
+              id={product.id}
               title={product.title}
               price={product.price}
               rating={product.rating}
@@ -41,6 +43,7 @@ function Home(props) {
           {row3.map((product) => (
             <Product
               key={product.id}
+              id={product.id}
               title={product.title}
               price={product.price}
               rating={product.rating}
