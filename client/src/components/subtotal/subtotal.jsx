@@ -5,8 +5,8 @@ import "./subtotal.css";
 
 function Subtotal(props) {
   const basket = useSelector((state) => state.basket.list);
-  const initValue = 0;
 
+  const initValue = 0;
   const number = basket.reduce((acc, curr) => acc + curr.price, initValue);
   const currency = new Intl.NumberFormat("en-IN", {
     style: "currency",

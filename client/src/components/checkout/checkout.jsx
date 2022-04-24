@@ -1,8 +1,14 @@
 import React from "react";
-import "./checkout.css";
+import { useSelector } from "react-redux";
+
 import Subtotal from "../subtotal/subtotal";
+import CheckoutProduct from "../checkoutProduct/checkoutProduct";
+
+import "./checkout.css";
 
 function Checkout(props) {
+  const basket = useSelector((state) => state.basket.list);
+
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -14,6 +20,17 @@ function Checkout(props) {
 
         <div>
           <h2 className="checkout__title">Your Shopping Basket</h2>
+
+          {basket.map((item) => (
+            <CheckoutProduct
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              price={item.price}
+              rating={item.rating}
+              image={item.image}
+            />
+          ))}
         </div>
       </div>
 

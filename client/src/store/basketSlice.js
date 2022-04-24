@@ -15,7 +15,7 @@ const basketSlice = createSlice({
 
     productRemoved: (products, action) => {
       const index = products.list.findIndex(
-        (product) => (product.id = action.payload.id)
+        (product) => (product.id === action.payload.id)
       );
       products.list.splice(index, 1);
     },
