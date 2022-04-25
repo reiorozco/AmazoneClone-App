@@ -8,6 +8,7 @@ import "./checkout.css";
 
 function Checkout(props) {
   const basket = useSelector((state) => state.basket.list);
+  const user = useSelector((state) => state.currentUser.user);
 
   return (
     <div className="checkout">
@@ -19,6 +20,9 @@ function Checkout(props) {
         />
 
         <div>
+          {user && (
+            <h3 className="checkout__titleEmail">Hello, {user.email}</h3>
+          )}
           <h2 className="checkout__title">Your Shopping Basket</h2>
 
           {basket.map((item) => (

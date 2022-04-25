@@ -1,14 +1,35 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { signOut } from "firebase/auth";
 
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+
+import { auth } from "../../firebase";
 
 import "./header.css";
 
 function Header(props) {
   const basket = useSelector((state) => state.basket.list);
+  const user = useSelector((state) => state.currentUser.user);
+
+  const navigate = useNavigate();
+
+  const handleAuth = () => {
+    user
+      ? signOut(auth)
+          .then(() => {
+            // Sign-out successful.
+            alert("Sign-out successful.");
+            navigate("/");
+          })
+          .catch((error) => {
+            // An error happened.
+            alert(error.message);
+          })
+      : navigate("/login");
+  };
 
   return (
     <>
@@ -27,10 +48,16 @@ function Header(props) {
         </div>
 
         <div className="header__nav">
-          <div className="header__option">
-            <span className="header__optionLineOne">Hello Guest</span>
-            <span className="header__optionLineTwo">Sign In</span>
+          {/*<Link className="none-textDecoration" to={!user && "/login"}>*/}
+          <div className="header__option pointer" onClick={handleAuth}>
+            <span className="header__optionLineOne">
+              Hello {user ? "User" : "Guest"}
+            </span>
+            <span className="header__optionLineTwo">
+              {user ? "Sign Out" : "Sign In"}
+            </span>
           </div>
+          {/*</Link>*/}
 
           <div className="header__option">
             <span className="header__optionLineOne">Returns</span>
@@ -42,7 +69,7 @@ function Header(props) {
             <span className="header__optionLineTwo">Prime</span>
           </div>
 
-          <Link to="/checkout">
+          <Link className="none-textDecoration" to="/checkout">
             <div className="header__optionBasket">
               <ShoppingBasketIcon />
               <span className="header__optionLineTwo header__basketCount">
