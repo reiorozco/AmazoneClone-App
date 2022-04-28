@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase";
+import { auth } from "../../../firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -11,6 +11,7 @@ import "./login.css";
 function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const signIn = (e) => {
@@ -20,14 +21,14 @@ function Login(props) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         // ...
         user && navigate("/", { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(`SignIn Error: ${errorCode}, ${errorMessage}`);
+        // alert(`SignIn Error: ${errorCode}, ${errorMessage}`);
+        setError(errorMessage);
       });
   };
 
@@ -38,15 +39,14 @@ function Login(props) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         // ...
         user && navigate("/", { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(`Register Error: ${errorCode}, ${errorMessage}`);
-        // ..
+        // alert(`Register Error: ${errorCode}, ${errorMessage}`);
+        setError(errorMessage);
       });
 
     setEmail("");
@@ -80,6 +80,8 @@ function Login(props) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+
+          {error && <span className="login__warning">{error}</span>}
 
           <button
             type="submit"

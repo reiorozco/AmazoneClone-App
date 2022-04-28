@@ -53,6 +53,12 @@
   border-color: #a88734 #9c7e31 #846a29;
 }
 
+.login__warning {
+  color: #f44336;
+  padding: 2px;
+  font-weight: bold;
+}
+
 .login__registerButton {
   border-radius: 2px;
   width: 100%;

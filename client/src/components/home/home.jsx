@@ -1,6 +1,8 @@
 import React from "react";
+
 import Product from "../product/product";
 import { row1, row2, row3 } from "../../utils/productsData";
+
 import "./home.css";
 
 function Home(props) {

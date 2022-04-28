@@ -7,16 +7,21 @@ function Subtotal(props) {
   const basket = useSelector((state) => state.basket.list);
 
   const initValue = 0;
-  const number = basket.reduce((acc, curr) => acc + curr.price, initValue);
+  const number = basket.reduce(
+    (acc, curr) => acc + curr.price * curr.amount,
+    initValue
+  );
   const currency = new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "USD",
   }).format(number);
 
+  const amount = basket.reduce((acc, curr) => acc + curr.amount, initValue);
+
   return (
     <div className="subtotal">
       <p>
-        Subtotal ({basket.length} items): <strong>{currency}</strong>
+        Subtotal ({amount} items): <strong>{currency}</strong>
       </p>
 
       <small className="subtotal__gift">

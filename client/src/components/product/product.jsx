@@ -8,6 +8,8 @@ import "./product.css";
 function Product({ id, title, image, price, rating }) {
   const dispatch = useDispatch();
 
+  const ratingStars = Array.from(Array(rating).keys());
+
   const addToBasket = () => {
     dispatch(
       productAdded({
@@ -16,6 +18,7 @@ function Product({ id, title, image, price, rating }) {
         image,
         price,
         rating,
+        amount: 1,
       })
     );
   };
@@ -31,11 +34,9 @@ function Product({ id, title, image, price, rating }) {
         </p>
 
         <div className="product__rating">
-          {Array(rating)
-            .fill(undefined, undefined, undefined)
-            .map((_, i) => (
-              <p key={i}>⭐</p> // Star emoji ⭐
-            ))}
+          {ratingStars.map((_, i) => (
+            <p key={i}>⭐</p> // Star emoji ⭐
+          ))}
         </div>
       </div>
 

@@ -5,8 +5,10 @@ import { signOut } from "firebase/auth";
 
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import DehazeIcon from "@mui/icons-material/Dehaze";
 
-import { auth } from "../../firebase";
+import { auth } from "../../../firebase";
+import Footer from "../footer/footer";
 
 import "./header.css";
 
@@ -15,6 +17,8 @@ function Header(props) {
   const user = useSelector((state) => state.currentUser.user);
 
   const navigate = useNavigate();
+
+  const amount = basket.reduce((acc, curr) => acc + curr.amount, 0);
 
   const handleAuth = () => {
     user
@@ -33,7 +37,7 @@ function Header(props) {
 
   return (
     <>
-      <div className="header">
+      <div className="header" id="header">
         <Link to="/">
           <img
             className="header__logo"
@@ -51,7 +55,7 @@ function Header(props) {
           {/*<Link className="none-textDecoration" to={!user && "/login"}>*/}
           <div className="header__option pointer" onClick={handleAuth}>
             <span className="header__optionLineOne">
-              Hello {user ? "User" : "Guest"}
+              Hello {user ? user.email : "Guest"}
             </span>
             <span className="header__optionLineTwo">
               {user ? "Sign Out" : "Sign In"}
@@ -73,14 +77,29 @@ function Header(props) {
             <div className="header__optionBasket">
               <ShoppingBasketIcon />
               <span className="header__optionLineTwo header__basketCount">
-                {basket.length}
+                {amount}
               </span>
             </div>
           </Link>
         </div>
       </div>
 
+      <div className="header__bottom">
+        <div className="header__bottom--icon pointer">
+          <DehazeIcon sx={{ paddingLeft: "9px" }} />
+          <span>All</span>
+        </div>
+
+        <span>Today's Deals</span>
+        <span>Customer Service</span>
+        <span>Registry</span>
+        <span>Gift Cards</span>
+        <span>Sell</span>
+      </div>
+
       <Outlet />
+
+      <Footer />
     </>
   );
 }

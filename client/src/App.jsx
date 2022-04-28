@@ -7,7 +7,7 @@ import Header from "./components/header/header";
 import Home from "./components/home/home";
 import Checkout from "./components/checkout/checkout";
 import Login from "./components/login/login";
-import { auth } from "./firebase";
+import { auth } from "../firebase";
 import { userSet } from "./store/userSlice";
 
 import "./App.css";
@@ -22,8 +22,8 @@ function App() {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         const email = user.email;
-        dispatch(userSet({ email, uid }));
         // ...
+        dispatch(userSet({ email, uid }));
       } else {
         // User is signed out
         // ...

@@ -33,6 +33,7 @@ function Checkout(props) {
               price={item.price}
               rating={item.rating}
               image={item.image}
+              amount={item.amount}
             />
           ))}
         </div>

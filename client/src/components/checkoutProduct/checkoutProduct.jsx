@@ -1,13 +1,22 @@
 import React from "react";
-import "./checkoutProduct.css";
 import { useDispatch } from "react-redux";
-import { productRemoved } from "../../store/basketSlice";
 
-function CheckoutProduct({ id, title, image, price, rating }) {
+import { productAmountChanged, productRemoved } from "../../store/basketSlice";
+
+import "./checkoutProduct.css";
+
+function CheckoutProduct({ id, title, image, price, rating, amount }) {
   const dispatch = useDispatch();
+
+  const ratingStars = Array.from(Array(rating).keys());
+  const qtyArray = Array.from({ length: 10 }, (_, i) => i + 1);
 
   const removeFromBasket = () => {
     dispatch(productRemoved({ id }));
+  };
+
+  const handleChange = ({ target: { value } }) => {
+    dispatch(productAmountChanged({ id, amount: parseInt(value) }));
   };
 
   return (
@@ -25,16 +34,28 @@ function CheckoutProduct({ id, title, image, price, rating }) {
         </p>
 
         <div className="checkoutProduct__rating">
-          {Array(rating)
-            .fill(undefined, undefined, undefined)
-            .map((_, i) => (
-              <p key={i}>⭐</p> // Star emoji ⭐
-            ))}
+          {ratingStars.map((_, i) => (
+            <p key={i}>⭐</p> // Star emoji ⭐
+          ))}
         </div>
 
-        <button className="pointer" onClick={removeFromBasket}>
-          Remove from basket
-        </button>
+        <div className="checkoutProduct__amount">
+          <form>
+            <label>Quantity:</label>
+            <br />
+            <select value={amount} onChange={handleChange}>
+              {qtyArray.map((num, i) => (
+                <option key={i} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
+          </form>
+
+          <button className="pointer" onClick={removeFromBasket}>
+            Remove from basket
+          </button>
+        </div>
       </div>
     </div>
   );
