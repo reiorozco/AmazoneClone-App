@@ -47,6 +47,14 @@
   display: flex;
   align-items: center;
   color: white;
+  margin-right: 5px;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.header__optionBasket:hover {
+  border-color: white;
 }
 
 .header__basketCount {
@@ -57,6 +65,17 @@
 .header__nav {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+}
+
+.header__nav > div {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.header__nav > div:hover {
+  border-color: white;
 }
 
 .header__option {

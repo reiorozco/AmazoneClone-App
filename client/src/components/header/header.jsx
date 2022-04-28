@@ -48,7 +48,7 @@ function Header(props) {
 
         <div className="header__search">
           <input type="text" className="header__searchInput" />
-          <SearchIcon className="header__searchIcon" />
+          <SearchIcon className="header__searchIcon pointer" />
         </div>
 
         <div className="header__nav">
@@ -63,12 +63,12 @@ function Header(props) {
           </div>
           {/*</Link>*/}
 
-          <div className="header__option">
+          <div className="header__option pointer">
             <span className="header__optionLineOne">Returns</span>
             <span className="header__optionLineTwo">& Orders</span>
           </div>
 
-          <div className="header__option">
+          <div className="header__option pointer">
             <span className="header__optionLineOne">Your</span>
             <span className="header__optionLineTwo">Prime</span>
           </div>
