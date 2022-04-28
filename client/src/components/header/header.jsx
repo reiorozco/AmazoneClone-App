@@ -6,7 +6,9 @@ import { signOut } from "firebase/auth";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import DehazeIcon from "@mui/icons-material/Dehaze";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
+import { departments } from "../../utils/departamentsData";
 import { auth } from "../../../firebase";
 import Footer from "../footer/footer";
 
@@ -46,8 +48,27 @@ function Header(props) {
           />
         </Link>
 
+        <div className="header__optionLocation pointer">
+          <LocationOnIcon />
+          <div>
+            <span className="header__optionLineOne">Deliver to</span>
+            <span className="header__optionLineTwo">Colombia</span>
+          </div>
+        </div>
+
         <div className="header__search">
+          <div className="header__searchMenu">
+            <select className="pointer">
+              {departments.map((d) => (
+                <option key={d} value={d}>
+                  {d}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <input type="text" className="header__searchInput" />
+
           <SearchIcon className="header__searchIcon pointer" />
         </div>
 
