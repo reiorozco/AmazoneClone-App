@@ -6,6 +6,7 @@
 
 .checkoutProduct__info {
   padding-left: 20px;
+  flex-grow: 1;
 }
 
 .checkoutProduct__amount {

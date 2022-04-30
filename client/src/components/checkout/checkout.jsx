@@ -5,6 +5,7 @@ import Subtotal from "../subtotal/subtotal";
 import CheckoutProduct from "../checkoutProduct/checkoutProduct";
 
 import "./checkout.css";
+import { Link } from "react-router-dom";
 
 function Checkout(props) {
   const basket = useSelector((state) => state.basket.list);
@@ -23,7 +24,21 @@ function Checkout(props) {
           {user && (
             <h3 className="checkout__titleEmail">Hello, {user.email}</h3>
           )}
-          <h2 className="checkout__title">Your Shopping Basket</h2>
+          <h2 className="checkout__title">
+            Your Shopping Basket {basket.length === 0 && "is empty."}
+          </h2>
+
+          {basket.length === 0 && (
+            <p className="checkout__empty">
+              Your Shopping Cart lives to serve. Give it purpose — fill it with
+              groceries, clothing, household supplies, electronics, and more.
+              <br />
+              <br />
+              Continue shopping on the <Link to="/">Amazon.com homepage</Link>,
+              learn about <Link to="/">today's deals</Link>, or visit your{" "}
+              <Link to="/">Wish List</Link>.
+            </p>
+          )}
 
           {basket.map((item) => (
             <CheckoutProduct
