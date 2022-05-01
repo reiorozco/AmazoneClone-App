@@ -5,7 +5,7 @@ import { row1, row2, row3 } from "../../utils/productsData";
 
 import "./home.css";
 
-function Home(props) {
+function Home() {
   return (
     <div className="home">
       <div className="home__container">

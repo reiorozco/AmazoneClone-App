@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
 import { productAmountChanged, productRemoved } from "../../store/basketSlice";
@@ -12,7 +13,7 @@ function CheckoutProduct({
   price,
   rating,
   amount,
-  hiddenElemnts,
+  hiddenElement,
 }) {
   const dispatch = useDispatch();
 
@@ -47,7 +48,7 @@ function CheckoutProduct({
           ))}
         </div>
 
-        {!hiddenElemnts && (
+        {!hiddenElement && (
           <div className="checkoutProduct__amount">
             <form>
               <label>Quantity:</label>
@@ -70,5 +71,15 @@ function CheckoutProduct({
     </div>
   );
 }
+
+CheckoutProduct.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  price: PropTypes.number,
+  rating: PropTypes.number,
+  amount: PropTypes.number,
+  hiddenElement: PropTypes.bool,
+};
 
 export default CheckoutProduct;

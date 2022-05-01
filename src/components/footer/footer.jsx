@@ -6,7 +6,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import "./footer.css";
 
-function Footer(props) {
+function Footer() {
   return (
     <div className="footer">
       <a className="footer__backTop none-textDecoration" href="#header">

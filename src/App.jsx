@@ -60,7 +60,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="orders" element={<Orders />} />
+          <Route
+            path="orders"
+            element={
+              <ProtectedRoute>
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
 
           <Route path="*" element={<NotFound />} />
         </Route>

@@ -22,11 +22,11 @@ export const row1 = [
 export const row2 = [
   {
     id: "4903850",
-    title: "Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor",
+    title:
+      "Fitbit Charge 5 Advanced Fitness & Health Tracker with Built-in GPS, Stress Management Tools",
     price: 199.99,
     rating: 3,
-    image:
-      "https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg",
+    image: "https://m.media-amazon.com/images/I/41iag5vRGVL._AC_SL1001_.jpg",
   },
   {
     id: "23445930",

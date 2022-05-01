@@ -44,4 +44,5 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something failed.");
 });
 
+// Expose Express API as a single Cloud Function:
 exports.api = functions.https.onRequest(app);

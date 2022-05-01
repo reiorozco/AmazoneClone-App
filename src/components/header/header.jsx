@@ -14,7 +14,7 @@ import Footer from "../footer/footer";
 
 import "./header.css";
 
-function Header(props) {
+function Header() {
   const basket = useSelector((state) => state.basket.list);
   const user = useSelector((state) => state.currentUser.user);
 
@@ -113,7 +113,7 @@ function Header(props) {
           <span>All</span>
         </div>
 
-        <span>Today's Deals</span>
+        <span>{"Today's Deals"}</span>
         <span>Customer Service</span>
         <span>Registry</span>
         <span>Gift Cards</span>

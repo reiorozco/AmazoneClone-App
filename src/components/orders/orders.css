@@ -1,5 +1,6 @@
 .orders {
   padding: 20px 80px;
+  flex-grow: 1;
 }
 
 .orders > h1 {

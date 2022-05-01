@@ -7,7 +7,7 @@ import { db } from "../../../firebase";
 
 import "./orders.css";
 
-function Orders(props) {
+function Orders() {
   const [orders, setOrders] = useState([]);
 
   const user = useSelector((state) => state.currentUser.user);
@@ -26,11 +26,19 @@ function Orders(props) {
 
       setOrders(orders);
     });
-  }, []);
+
+    return () => {
+      unsubscribe();
+    };
+  }, [user]);
 
   return (
     <div className="orders">
       <h1>Your Orders</h1>
+
+      {orders.length === 0 && (
+        <p>{"Looks like you haven't placed an order in the last 3 months."}</p>
+      )}
 
       <div className="orders__order">
         {orders.map((order) => (

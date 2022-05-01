@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./subtotal.css";
 
-function Subtotal(props) {
+function Subtotal() {
   const navigate = useNavigate();
   const basket = useSelector((state) => state.basket.list);
 

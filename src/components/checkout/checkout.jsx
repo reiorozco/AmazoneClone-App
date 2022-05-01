@@ -7,7 +7,7 @@ import CheckoutProduct from "../checkoutProduct/checkoutProduct";
 import "./checkout.css";
 import { Link } from "react-router-dom";
 
-function Checkout(props) {
+function Checkout() {
   const basket = useSelector((state) => state.basket.list);
   const user = useSelector((state) => state.currentUser.user);
 
@@ -35,7 +35,7 @@ function Checkout(props) {
               <br />
               <br />
               Continue shopping on the <Link to="/">Amazon.com homepage</Link>,
-              learn about <Link to="/">today's deals</Link>, or visit your{" "}
+              learn about <Link to="/">{"today's deals"}</Link>, or visit your{" "}
               <Link to="/">Wish List</Link>.
             </p>
           )}

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { productAdded } from "../../store/basketSlice";
 
 import "./product.css";
+import PropTypes from "prop-types";
 
 function Product({ id, title, image, price, rating }) {
   const dispatch = useDispatch();
@@ -48,5 +49,13 @@ function Product({ id, title, image, price, rating }) {
     </div>
   );
 }
+
+Product.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  price: PropTypes.number,
+  rating: PropTypes.number,
+};
 
 export default Product;

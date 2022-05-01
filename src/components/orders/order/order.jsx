@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import CheckoutProduct from "../../checkoutProduct/checkoutProduct";
 
@@ -48,7 +49,7 @@ function Order({ order }) {
           rating={item.rating}
           image={item.image}
           amount={item.amount}
-          hiddenElemnts={true}
+          hiddenElement={true}
         />
       ))}
 
@@ -58,5 +59,9 @@ function Order({ order }) {
     </div>
   );
 }
+
+Order.propTypes = {
+  order: PropTypes.object,
+};
 
 export default Order;

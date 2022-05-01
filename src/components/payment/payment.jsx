@@ -11,7 +11,7 @@ import { db } from "../../../firebase";
 
 import "./payment.css";
 
-function Payment(props) {
+function Payment() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
@@ -68,14 +68,11 @@ function Payment(props) {
 
     if (paymentIntent) {
       try {
-        const orders = await setDoc(
-          doc(db, `users/${user.uid}/orders`, paymentIntent.id),
-          {
-            basket,
-            amount: paymentIntent.amount,
-            created: paymentIntent.created,
-          }
-        );
+        await setDoc(doc(db, `users/${user.uid}/orders`, paymentIntent.id), {
+          basket,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created,
+        });
 
         console.log("Document written with ID: ", paymentIntent.id);
 
