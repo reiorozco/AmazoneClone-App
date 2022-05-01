@@ -48,6 +48,10 @@
   margin-bottom: 10px;
 }
 
+.payment__details > form {
+  max-width: 400px;
+}
+
 /* Buttons and links */
 .payment__priceContainer > button {
   background: #f0c14b;

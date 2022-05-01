@@ -93,6 +93,16 @@
   flex-direction: column;
 }
 
+.header__optionOrders {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.header__optionOrders:hover {
+  border-color: white;
+}
+
 .header__nav {
   display: flex;
   justify-content: space-evenly;

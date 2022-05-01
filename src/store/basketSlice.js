@@ -32,9 +32,17 @@ const basketSlice = createSlice({
       );
       products.list.splice(index, 1);
     },
+
+    basketEmptied: (products, action) => {
+      products.list = [];
+    },
   },
 });
 
-export const { productAdded, productRemoved, productAmountChanged } =
-  basketSlice.actions;
+export const {
+  productAdded,
+  productRemoved,
+  productAmountChanged,
+  basketEmptied,
+} = basketSlice.actions;
 export default basketSlice.reducer;

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { doc, setDoc } from "firebase/firestore";
 
 import CheckoutProduct from "../checkoutProduct/checkoutProduct";
 import { getClientSecret } from "../../services/paymentIntentService";
+import { basketEmptied } from "../../store/basketSlice";
+import { db } from "../../../firebase";
 
 import "./payment.css";
 
@@ -14,6 +17,7 @@ function Payment(props) {
   const [clientSecret, setClientSecret] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const basket = useSelector((state) => state.basket.list);
   const user = useSelector((state) => state.currentUser.user);
@@ -63,7 +67,24 @@ function Payment(props) {
     }
 
     if (paymentIntent) {
-      navigate("/orders", { replace: true });
+      try {
+        const orders = await setDoc(
+          doc(db, `users/${user.uid}/orders`, paymentIntent.id),
+          {
+            basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          }
+        );
+
+        console.log("Document written with ID: ", paymentIntent.id);
+
+        navigate("/orders", { replace: true });
+        dispatch(basketEmptied());
+        return;
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     }
 
     setIsLoading(false);

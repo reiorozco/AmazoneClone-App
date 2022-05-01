@@ -12,6 +12,7 @@ import Login from "./components/login/login";
 import Payment from "./components/payment/payment";
 import NotFound from "./components/notFound/notFound";
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+import Orders from "./components/orders/orders";
 import { auth } from "../firebase";
 import { userSet } from "./store/userSlice";
 
@@ -59,6 +60,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="orders" element={<Orders />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

@@ -5,7 +5,15 @@ import { productAmountChanged, productRemoved } from "../../store/basketSlice";
 
 import "./checkoutProduct.css";
 
-function CheckoutProduct({ id, title, image, price, rating, amount }) {
+function CheckoutProduct({
+  id,
+  title,
+  image,
+  price,
+  rating,
+  amount,
+  hiddenElemnts,
+}) {
   const dispatch = useDispatch();
 
   const ratingStars = Array.from(Array(rating).keys());
@@ -39,23 +47,25 @@ function CheckoutProduct({ id, title, image, price, rating, amount }) {
           ))}
         </div>
 
-        <div className="checkoutProduct__amount">
-          <form>
-            <label>Quantity:</label>
-            <br />
-            <select value={amount} onChange={handleChange}>
-              {qtyArray.map((num, i) => (
-                <option key={i} value={num}>
-                  {num}
-                </option>
-              ))}
-            </select>
-          </form>
+        {!hiddenElemnts && (
+          <div className="checkoutProduct__amount">
+            <form>
+              <label>Quantity:</label>
+              <br />
+              <select value={amount} onChange={handleChange}>
+                {qtyArray.map((num, i) => (
+                  <option key={i} value={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
+            </form>
 
-          <button className="pointer" onClick={removeFromBasket}>
-            Remove from basket
-          </button>
-        </div>
+            <button className="pointer" onClick={removeFromBasket}>
+              Remove from basket
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

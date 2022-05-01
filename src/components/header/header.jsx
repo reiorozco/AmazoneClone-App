@@ -84,10 +84,12 @@ function Header(props) {
           </div>
           {/*</Link>*/}
 
-          <div className="header__option pointer">
-            <span className="header__optionLineOne">Returns</span>
-            <span className="header__optionLineTwo">& Orders</span>
-          </div>
+          <Link className="none-textDecoration" to="/orders">
+            <div className="header__option header__optionOrders pointer">
+              <span className="header__optionLineOne">Returns</span>
+              <span className="header__optionLineTwo">& Orders</span>
+            </div>
+          </Link>
 
           <div className="header__option pointer">
             <span className="header__optionLineOne">Your</span>
