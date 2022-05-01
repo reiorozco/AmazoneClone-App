@@ -4,7 +4,7 @@ require("express-async-errors");
 const cors = require("cors");
 const stripe = require("stripe")(
   "sk_test_51Ku390E2nsqcAGkcBhHUrpISKNpS3YjD5ArBwmpMBekJ6AsPDFR6CBx8jVMLAtwgBJHCk5G2FDcBIaRzLTNwWElt00Vhtnec8J"
-);
+); // SECRET KEY TEST
 
 const app = express();
 

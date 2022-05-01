@@ -22,7 +22,7 @@ import "./App.css";
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
   "pk_test_51Ku390E2nsqcAGkcuuE2wycwA3lVJRiyctRFkwNL1ULG9eH3lE34tXXQEM1ZkjDD0UGOEBii1vnnYiZAV6KGG6wo00gify71Q5"
-);
+); // PUBLIC KEY TEST
 
 function App() {
   const dispatch = useDispatch();
