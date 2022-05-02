@@ -31,13 +31,13 @@ https://firebase.google.com/docs/auth/web/start
 
 ### Cloud Functions for Firebase
 
-🟠 Cloud Functions for Firebase is a serverless framework that lets you automatically run backend code in response to events triggered by Firebase features and HTTPS requests. Your JavaScript or TypeScript code is stored in Google's cloud and runs in a managed environment. There's no need to manage and scale your own servers.
+Cloud Functions for Firebase is a serverless framework that lets you automatically run backend code in response to events triggered by Firebase features and HTTPS requests. Your JavaScript or TypeScript code is stored in Google's cloud and runs in a managed environment. There's no need to manage and scale your own servers.
 
 More information below
 
 https://firebase.google.com/docs/functions/get-started
 
-You can see this service in the folder functions, it is not the server that is being consumed by the client, because in order to deploy it, you will need a Blaze account in Firebase. If you don't have this type of account, deploy the server to another site, and change the base URL in ./src/services/httpServices.js
+🟠 You can see this service in the folder functions, it is not the server that is being consumed by the client, because in order to deploy it, you will need a Blaze account in Firebase. If you don't have this type of account, deploy the server to another site, and change the base URL in ./src/services/httpServices.js
 
 ### Custom payment flow
 
