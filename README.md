@@ -64,7 +64,7 @@ Next, from the ./functions folder, install the dependencies:
 
 From the ./functions folder, run:
 
-    node run serve
+    npm run serve
 
 After you run this command, the Firebase CLI outputs the URL for any HTTP function endpoints. In your terminal, you should see a line like the following:
 
